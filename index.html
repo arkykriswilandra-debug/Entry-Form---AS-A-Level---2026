@@ -534,18 +534,136 @@
     margin:8px 0 0;
   }
   .print-only{display:none;}
+  #printSummary{display:none;}
   @media print{
+    @page{ size:A4; margin:14mm; }
     body{background:#fff;}
-    .masthead .badge-row, .export-btn, .export-hint, .checklist, footer, .side .summary-card .progress-track, .side .summary-card .progress-label, .mobile-total-bar{display:none;}
-    .layout{grid-template-columns:1fr;display:block;}
-    .card{break-inside:avoid; border:1px solid #ccc; margin-bottom:12px;}
-    .side{position:static; margin-top:14px;}
-    .masthead{background:#fff !important; color:#000 !important; border:1px solid #ccc;}
-    .masthead .school, .masthead .sub{color:#333 !important;}
-    .summary-card{background:#fff !important; color:#000 !important; border:1px solid #ccc;}
-    .summary-card .label, .summary-card .total-sub{color:#555 !important;}
-    .print-only{display:block;}
-    input, select{border:none !important; padding-left:0 !important;}
+    .shell{display:none;}
+    .mobile-total-bar{display:none;}
+    #printSummary{
+      display:block;
+      font-family:"Inter",system-ui,sans-serif;
+      color:#1b2130;
+      max-width:100%;
+    }
+    #printSummary .ps-head{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-end;
+      border-bottom:2px solid #131c30;
+      padding-bottom:10px;
+      margin-bottom:14px;
+    }
+    #printSummary .ps-school{
+      font-size:10.5px;
+      color:#565f70;
+      margin:0 0 3px;
+      letter-spacing:.02em;
+    }
+    #printSummary .ps-title{
+      font-family:"Source Serif 4",Georgia,serif;
+      font-size:19px;
+      font-weight:600;
+      margin:0 0 3px;
+      color:#131c30;
+    }
+    #printSummary .ps-sub{
+      font-size:11px;
+      color:#565f70;
+      margin:0;
+    }
+    #printSummary .ps-badge{
+      font-size:10px;
+      color:#8a6314;
+      border:1px solid #c08a2e;
+      border-radius:4px;
+      padding:4px 9px;
+      white-space:nowrap;
+    }
+    #printSummary .ps-section-title{
+      font-size:10px;
+      font-weight:600;
+      text-transform:uppercase;
+      letter-spacing:.05em;
+      color:#8891a0;
+      margin:0 0 6px;
+      border-bottom:1px solid #e2e0d6;
+      padding-bottom:4px;
+    }
+    #printSummary .ps-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:2px 24px;
+      margin-bottom:14px;
+      font-size:11.5px;
+    }
+    #printSummary .ps-row{
+      display:flex;
+      justify-content:space-between;
+      padding:3px 0;
+      border-bottom:1px dotted #e2e0d6;
+    }
+    #printSummary .ps-row .k{color:#565f70;}
+    #printSummary .ps-row .v{font-weight:500; text-align:right;}
+    #printSummary table{
+      width:100%;
+      border-collapse:collapse;
+      font-size:11px;
+      margin-bottom:12px;
+    }
+    #printSummary table th{
+      text-align:left;
+      font-size:9.5px;
+      text-transform:uppercase;
+      letter-spacing:.04em;
+      color:#8891a0;
+      border-bottom:1px solid #131c30;
+      padding:0 6px 5px;
+    }
+    #printSummary table td{
+      padding:5px 6px;
+      border-bottom:1px solid #efede4;
+    }
+    #printSummary table td.num{text-align:right; font-variant-numeric:tabular-nums;}
+    #printSummary .ps-total-box{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      background:#131c30;
+      color:#fff;
+      border-radius:6px;
+      padding:11px 16px;
+      margin:10px 0 18px;
+    }
+    #printSummary .ps-total-box .lbl{font-size:11px; color:#a9b2c6;}
+    #printSummary .ps-total-box .amt{
+      font-family:"Source Serif 4",Georgia,serif;
+      font-size:20px;
+      font-weight:600;
+      font-variant-numeric:tabular-nums;
+    }
+    #printSummary .ps-sign-row{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:24px;
+      margin-top:34px;
+    }
+    #printSummary .ps-sign-line{
+      border-top:1px solid #1b2130;
+      padding-top:5px;
+      font-size:10px;
+      text-align:center;
+      color:#565f70;
+    }
+    #printSummary .ps-footer{
+      margin-top:16px;
+      padding-top:8px;
+      border-top:1px solid #e2e0d6;
+      font-size:9.5px;
+      color:#8891a0;
+      display:flex;
+      justify-content:space-between;
+    }
   }
 </style>
 </head>
@@ -724,6 +842,48 @@
     <p class="mt-amount" id="mobileTotalAmount">Rp 0</p>
   </div>
   <button type="button" id="mobileScrollBtn">View summary</button>
+</div>
+
+<div id="printSummary">
+  <div class="ps-head">
+    <div>
+      <p class="ps-school">Sekolah Global Indo-Asia · Jl. Ahmad Yani Kav. SGIA, Batam</p>
+      <p class="ps-title">Cambridge AS &amp; A Level — Registration Summary</p>
+      <p class="ps-sub">Retake exam · October–November 2026 series</p>
+    </div>
+    <span class="ps-badge" id="psDate"></span>
+  </div>
+
+  <p class="ps-section-title">Student &amp; parent details</p>
+  <div class="ps-grid" id="psInfoGrid"></div>
+
+  <p class="ps-section-title">Subjects</p>
+  <table>
+    <thead><tr><th>Subject</th><th>Level</th><th style="text-align:right">Amount</th></tr></thead>
+    <tbody id="psSubjectRows"></tbody>
+  </table>
+
+  <div id="psExtrasWrap">
+    <p class="ps-section-title">Additional fees</p>
+    <table>
+      <tbody id="psExtraRows"></tbody>
+    </table>
+  </div>
+
+  <div class="ps-total-box">
+    <span class="lbl">Total amount payable</span>
+    <span class="amt" id="psTotal">Rp 0</span>
+  </div>
+
+  <div class="ps-sign-row">
+    <div class="ps-sign-line">Parent's signature</div>
+    <div class="ps-sign-line">Student's signature</div>
+  </div>
+
+  <div class="ps-footer">
+    <span>CIMB Niaga 8000-23368-300 (Clarissa International) · BCA 340-394-9988 (Yayasan Clarissa International)</span>
+    <span>Payment due Sep 4, 2026</span>
+  </div>
 </div>
 
 <script>
@@ -914,11 +1074,54 @@ document.getElementById("mobileScrollBtn").addEventListener("click", () => {
 });
 
 document.getElementById("exportBtn").addEventListener("click", () => {
-  document.querySelectorAll("input[type=text], input[type=tel]").forEach(el => {
-    el.setAttribute("value", el.value);
-  });
+  renderPrintSummary();
   window.print();
 });
+
+function renderPrintSummary(){
+  const {chosen, extras} = collectState();
+  const gender = document.querySelector('input[name="gender"]:checked');
+  const fam = document.getElementById("familyName").value.trim();
+  const first = document.getElementById("firstName").value.trim();
+  const dob = `${document.getElementById("dobDate").value.trim() || "-"}/${document.getElementById("dobMonth").value.trim() || "-"}/${document.getElementById("dobYear").value.trim() || "-"}`;
+
+  document.getElementById("psDate").textContent = "Generated " + new Date().toLocaleDateString("en-GB", {day:"numeric", month:"long", year:"numeric"});
+
+  const infoPairs = [
+    ["Name", `${fam}${fam && first ? " / " : ""}${first}` || "—"],
+    ["Grade", document.getElementById("grade").value.trim() || "—"],
+    ["Gender", gender ? (gender.value === "M" ? "Male" : "Female") : "—"],
+    ["Date of birth", dob],
+    ["Student phone", document.getElementById("studentPhone").value.trim() || "—"],
+    ["Father", document.getElementById("fatherName").value.trim() || "—"],
+    ["Father's phone", document.getElementById("fatherPhone").value.trim() || "—"],
+    ["Mother", document.getElementById("motherName").value.trim() || "—"],
+    ["Mother's phone", document.getElementById("motherPhone").value.trim() || "—"],
+    ["Address", document.getElementById("address").value.trim() || "—"],
+  ];
+  document.getElementById("psInfoGrid").innerHTML = infoPairs.map(([k,v]) =>
+    `<div class="ps-row"><span class="k">${k}</span><span class="v">${v}</span></div>`
+  ).join("");
+
+  const subjectRows = document.getElementById("psSubjectRows");
+  subjectRows.innerHTML = chosen.length
+    ? chosen.map(c => `<tr><td>${c.name}</td><td>${c.level === "asa" ? "AS/A Level" : "Full A Level"}</td><td class="num">${rupiah(c.amount)}</td></tr>`).join("")
+    : `<tr><td colspan="3" style="color:#8891a0">No subjects selected</td></tr>`;
+
+  const checkedExtras = extras.filter(e => e.checked);
+  const extrasWrap = document.getElementById("psExtrasWrap");
+  if(checkedExtras.length){
+    extrasWrap.style.display = "block";
+    document.getElementById("psExtraRows").innerHTML = checkedExtras.map(e =>
+      `<tr><td>${e.hasQty ? `${e.title} (${e.qty} subjects)` : e.title}</td><td class="num">${rupiah(e.total)}</td></tr>`
+    ).join("");
+  } else {
+    extrasWrap.style.display = "none";
+  }
+
+  const grandTotal = chosen.reduce((s,c)=>s+c.amount,0) + extras.reduce((s,e)=>s+e.total,0);
+  document.getElementById("psTotal").textContent = rupiah(grandTotal);
+}
 
 function buildPayload(){
   const {chosen, extras} = collectState();
