@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SGIA — Formulir Pendaftaran Cambridge AS/A Level (Retake)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy-900:#131c30;
+    --navy-800:#1c2942;
+    --navy-700:#28395a;
+    --navy-500:#3f5170;
+    --navy-100:#e7ebf3;
+    --navy-50:#f3f5f9;
+    --gold-700:#8a6314;
+    --gold-600:#a97c1c;
+    --gold-500:#c08a2e;
+    --gold-100:#f4e8d2;
+    --gold-50:#faf3e5;
+    --paper:#f6f4ee;
+    --card:#ffffff;
+    --ink:#1b2130;
+    --ink-soft:#565f70;
+    --ink-faint:#8891a0;
+    --line:#e2e0d6;
+    --green-700:#2c6b3f;
+    --green-100:#e2f0e5;
+    --red-700:#a4342a;
+    --red-100:#fbe7e4;
+    --radius:10px;
+    --radius-lg:14px;
+    font-family:"Inter",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Inter",system-ui,sans-serif;
+    line-height:1.5;
+  }
+  .headline{
+    font-family:"Source Serif 4",Georgia,serif;
+  }
+  .shell{
+    max-width:1180px;
+    margin:0 auto;
+    padding:28px 20px 80px;
+  }
+  .masthead{
+    background:var(--navy-900);
+    color:#fff;
+    border-radius:var(--radius-lg);
+    padding:26px 30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    gap:20px;
+    flex-wrap:wrap;
+    margin-bottom:22px;
+  }
+  .masthead .school{
+    font-size:12.5px;
+    letter-spacing:.02em;
+    color:#aab4c9;
+    margin:0 0 10px;
+  }
+  .masthead h1{
+    font-size:26px;
+    font-weight:600;
+    margin:0 0 8px;
+    line-height:1.25;
+  }
+  .masthead .sub{
+    font-size:14px;
+    color:#c6cede;
+    margin:0;
+  }
+  .masthead .badge-row{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+  }
+  .pill{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.16);
+    color:#f1f3f8;
+    font-size:12.5px;
+    padding:7px 12px;
+    border-radius:999px;
+    white-space:nowrap;
+  }
+  .pill.deadline{
+    background:rgba(192,138,46,.18);
+    border-color:rgba(192,138,46,.5);
+    color:var(--gold-100);
+  }
+  .layout{
+    display:grid;
+    grid-template-columns:1fr 360px;
+    gap:22px;
+    align-items:start;
+  }
+  .card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:var(--radius-lg);
+    padding:22px 24px;
+    margin-bottom:18px;
+  }
+  .card h2{
+    font-family:"Source Serif 4",Georgia,serif;
+    font-size:18px;
+    font-weight:600;
+    margin:0 0 4px;
+    color:var(--navy-900);
+  }
+  .card .hint{
+    font-size:13px;
+    color:var(--ink-soft);
+    margin:0 0 18px;
+  }
+  .field-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px 16px;
+  }
+  .field{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+  }
+  .field.full{grid-column:1/-1;}
+  .field label{
+    font-size:12.5px;
+    font-weight:500;
+    color:var(--ink-soft);
+  }
+  .field input, .field select{
+    height:38px;
+    border:1px solid #d6d3c6;
+    border-radius:8px;
+    padding:0 12px;
+    font-size:14px;
+    font-family:"Inter",sans-serif;
+    color:var(--ink);
+    background:#fff;
+  }
+  .field input:focus, .field select:focus{
+    outline:2px solid var(--navy-700);
+    outline-offset:1px;
+    border-color:var(--navy-700);
+  }
+  .radio-row{
+    display:flex;
+    gap:18px;
+    height:38px;
+    align-items:center;
+  }
+  .radio-row label{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    font-size:14px;
+    color:var(--ink);
+    font-weight:400;
+    cursor:pointer;
+  }
+  .dob-row{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    gap:10px;
+  }
+  table.subjects{
+    width:100%;
+    border-collapse:collapse;
+    font-size:13.5px;
+  }
+  table.subjects th{
+    text-align:left;
+    font-size:11.5px;
+    font-weight:600;
+    color:var(--ink-soft);
+    text-transform:uppercase;
+    letter-spacing:.03em;
+    padding:0 8px 10px;
+    border-bottom:1px solid var(--line);
+  }
+  table.subjects td{
+    padding:10px 8px;
+    border-bottom:1px solid #efede4;
+    vertical-align:middle;
+  }
+  table.subjects tr.active td{
+    background:var(--gold-50);
+  }
+  table.subjects td.subject-name{
+    font-weight:500;
+  }
+  table.subjects td.code{
+    color:var(--ink-faint);
+    font-variant-numeric:tabular-nums;
+  }
+  .level-choice{
+    display:flex;
+    gap:12px;
+  }
+  .level-choice label{
+    display:flex;
+    align-items:center;
+    gap:5px;
+    font-size:13px;
+    color:var(--ink-soft);
+    cursor:pointer;
+  }
+  .level-choice input[type=radio]:disabled + span{
+    color:var(--ink-faint);
+  }
+  td.price{
+    text-align:right;
+    font-variant-numeric:tabular-nums;
+    color:var(--ink-soft);
+    font-size:13px;
+  }
+  .checkbox-big{
+    width:18px;
+    height:18px;
+    accent-color:var(--navy-800);
+    cursor:pointer;
+  }
+  .fee-list{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  .fee-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:14px;
+    padding:12px 14px;
+    border:1px solid var(--line);
+    border-radius:9px;
+  }
+  .fee-row.checked{
+    border-color:var(--gold-500);
+    background:var(--gold-50);
+  }
+  .fee-row .left{
+    display:flex;
+    align-items:flex-start;
+    gap:12px;
+  }
+  .fee-row .text .title{
+    font-size:14px;
+    font-weight:500;
+    color:var(--ink);
+  }
+  .fee-row .text .desc{
+    font-size:12.5px;
+    color:var(--ink-soft);
+    margin-top:2px;
+  }
+  .fee-row .qty{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin-top:8px;
+  }
+  .fee-row .qty input{
+    width:56px;
+    height:30px;
+    border:1px solid #d6d3c6;
+    border-radius:6px;
+    padding:0 8px;
+    font-size:13px;
+  }
+  .fee-row .amount{
+    font-size:14px;
+    font-variant-numeric:tabular-nums;
+    color:var(--ink);
+    white-space:nowrap;
+    min-width:110px;
+    text-align:right;
+  }
+  .side{
+    position:sticky;
+    top:20px;
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+  }
+  .summary-card{
+    background:var(--navy-900);
+    color:#fff;
+    border-radius:var(--radius-lg);
+    padding:22px 22px 20px;
+  }
+  .summary-card .label{
+    font-size:12px;
+    color:#a9b2c6;
+    margin:0 0 6px;
+  }
+  .summary-card .total{
+    font-family:"Source Serif 4",Georgia,serif;
+    font-size:30px;
+    font-weight:600;
+    margin:0 0 4px;
+    font-variant-numeric:tabular-nums;
+  }
+  .summary-card .total-sub{
+    font-size:12.5px;
+    color:#8b94aa;
+    margin:0 0 18px;
+  }
+  .progress-track{
+    height:6px;
+    background:rgba(255,255,255,.12);
+    border-radius:99px;
+    overflow:hidden;
+    margin-bottom:8px;
+  }
+  .progress-fill{
+    height:100%;
+    background:var(--gold-500);
+    border-radius:99px;
+    width:0%;
+    transition:width .25s ease;
+  }
+  .progress-label{
+    font-size:12px;
+    color:#a9b2c6;
+    margin:0;
+  }
+  .summary-list{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:var(--radius-lg);
+    padding:18px 20px;
+  }
+  .summary-list h3{
+    font-size:13px;
+    font-weight:600;
+    color:var(--navy-900);
+    margin:0 0 12px;
+    text-transform:uppercase;
+    letter-spacing:.02em;
+  }
+  .info-line{
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+    font-size:13px;
+    padding:6px 0;
+    border-bottom:1px dashed #eae7db;
+  }
+  .info-line:last-child{border-bottom:none;}
+  .info-line .k{color:var(--ink-soft);}
+  .info-line .v{
+    color:var(--ink);
+    font-weight:500;
+    text-align:right;
+    max-width:60%;
+    overflow-wrap:break-word;
+  }
+  .info-line .v.empty{
+    color:var(--ink-faint);
+    font-weight:400;
+    font-style:italic;
+  }
+  .empty-state{
+    font-size:13px;
+    color:var(--ink-faint);
+    text-align:center;
+    padding:14px 0;
+  }
+  .subj-chip{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:8px 0;
+    border-bottom:1px dashed #eae7db;
+    font-size:13px;
+    gap:10px;
+  }
+  .subj-chip:last-child{border-bottom:none;}
+  .subj-chip .name{font-weight:500;}
+  .subj-chip .lvl{color:var(--ink-soft); font-size:11.5px;}
+  .subj-chip .amt{font-variant-numeric:tabular-nums; white-space:nowrap;}
+  .cost-line{
+    display:flex;
+    justify-content:space-between;
+    font-size:13px;
+    padding:7px 0;
+  }
+  .cost-line .k{color:var(--ink-soft);}
+  .cost-line .v{font-variant-numeric:tabular-nums; font-weight:500;}
+  .grand{
+    border-top:1px solid var(--line);
+    margin-top:6px;
+    padding-top:10px;
+    display:flex;
+    justify-content:space-between;
+    font-size:15px;
+    font-weight:600;
+    color:var(--navy-900);
+  }
+  .grand .v{font-variant-numeric:tabular-nums;}
+  .checklist{
+    list-style:none;
+    margin:0;
+    padding:0;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  .checklist li{
+    display:flex;
+    gap:10px;
+    font-size:13.5px;
+    color:var(--ink-soft);
+  }
+  .checklist li .dot{
+    width:5px;height:5px;border-radius:50%;
+    background:var(--gold-600);
+    margin-top:7px;
+    flex-shrink:0;
+  }
+  .bank-box{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+  }
+  .bank{
+    border:1px solid var(--line);
+    border-radius:9px;
+    padding:12px 14px;
+  }
+  .bank .bname{font-size:13px;font-weight:600;color:var(--navy-900);}
+  .bank .acc{font-size:13px;color:var(--ink-soft);margin-top:2px;}
+  .bank .num{font-variant-numeric:tabular-nums;font-size:13.5px;margin-top:4px;font-weight:500;}
+  footer{
+    text-align:center;
+    font-size:12px;
+    color:var(--ink-faint);
+    margin-top:20px;
+  }
+  @media(max-width:900px){
+    .layout{grid-template-columns:1fr;}
+    .field-grid{grid-template-columns:1fr;}
+    .side{position:static;}
+    .bank-box{grid-template-columns:1fr;}
+    .masthead{flex-direction:column;align-items:flex-start;}
+  }
+  .export-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:var(--gold-500);
+    color:#2a1c04;
+    border:none;
+    height:42px;
+    padding:0 18px;
+    border-radius:9px;
+    font-family:"Inter",sans-serif;
+    font-size:14px;
+    font-weight:600;
+    cursor:pointer;
+    width:100%;
+  }
+  .export-btn:hover{background:var(--gold-600);}
+  .export-hint{
+    font-size:12px;
+    color:var(--ink-faint);
+    text-align:center;
+    margin:8px 0 0;
+  }
+  .print-only{display:none;}
+  @media print{
+    body{background:#fff;}
+    .masthead .badge-row, .export-btn, .export-hint, .checklist, footer, .side .summary-card .progress-track, .side .summary-card .progress-label{display:none;}
+    .layout{grid-template-columns:1fr;display:block;}
+    .card{break-inside:avoid; border:1px solid #ccc; margin-bottom:12px;}
+    .side{position:static; margin-top:14px;}
+    .masthead{background:#fff !important; color:#000 !important; border:1px solid #ccc;}
+    .masthead .school, .masthead .sub{color:#333 !important;}
+    .summary-card{background:#fff !important; color:#000 !important; border:1px solid #ccc;}
+    .summary-card .label, .summary-card .total-sub{color:#555 !important;}
+    .print-only{display:block;}
+    input, select{border:none !important; padding-left:0 !important;}
+  }
+</style>
+</head>
+<body>
+<div class="shell">
+
+  <div class="masthead">
+    <div>
+      <p class="school">Sekolah Global Indo-Asia &nbsp;·&nbsp; Jl. Ahmad Yani Kav. SGIA, Batam</p>
+      <h1 class="headline">Formulir pendaftaran Cambridge AS &amp; A Level</h1>
+      <p class="sub">Ujian susulan (retake) — periode Oktober–November 2026</p>
+    </div>
+    <div class="badge-row">
+      <span class="pill deadline">Formulir paling lambat 31 Agustus 2026</span>
+      <span class="pill">Pembayaran paling lambat 4 September 2026</span>
+    </div>
+  </div>
+
+  <div class="layout">
+    <div class="main">
+
+      <div class="card">
+        <h2>Data siswa</h2>
+        <p class="hint">Isi sesuai nama pada paspor.</p>
+        <div class="field-grid">
+          <div class="field">
+            <label for="familyName">Nama keluarga (family name)</label>
+            <input id="familyName" type="text" placeholder="Contoh: Tanuwijaya">
+          </div>
+          <div class="field">
+            <label for="firstName">Nama depan &amp; tengah</label>
+            <input id="firstName" type="text" placeholder="Contoh: Kevin Aditya">
+          </div>
+          <div class="field">
+            <label for="grade">Kelas</label>
+            <input id="grade" type="text" placeholder="Contoh: 12">
+          </div>
+          <div class="field">
+            <label>Jenis kelamin</label>
+            <div class="radio-row">
+              <label><input type="radio" name="gender" value="M">Laki-laki</label>
+              <label><input type="radio" name="gender" value="F">Perempuan</label>
+            </div>
+          </div>
+          <div class="field full">
+            <label>Tanggal lahir</label>
+            <div class="dob-row">
+              <input id="dobDate" type="text" placeholder="Tanggal">
+              <input id="dobMonth" type="text" placeholder="Bulan">
+              <input id="dobYear" type="text" placeholder="Tahun">
+            </div>
+          </div>
+          <div class="field">
+            <label for="studentPhone">No. HP siswa</label>
+            <input id="studentPhone" type="tel" placeholder="08xx-xxxx-xxxx">
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Data orang tua</h2>
+        <div class="field-grid">
+          <div class="field">
+            <label for="fatherName">Nama ayah</label>
+            <input id="fatherName" type="text">
+          </div>
+          <div class="field">
+            <label for="fatherPhone">No. HP ayah</label>
+            <input id="fatherPhone" type="tel">
+          </div>
+          <div class="field">
+            <label for="motherName">Nama ibu</label>
+            <input id="motherName" type="text">
+          </div>
+          <div class="field">
+            <label for="motherPhone">No. HP ibu</label>
+            <input id="motherPhone" type="tel">
+          </div>
+          <div class="field full">
+            <label for="address">Alamat</label>
+            <input id="address" type="text" placeholder="Alamat lengkap">
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Pilihan mata pelajaran</h2>
+        <p class="hint">Centang mata pelajaran yang diambil, lalu pilih AS/A Level atau Full A Level.</p>
+        <table class="subjects">
+          <thead>
+            <tr>
+              <th style="width:26px"></th>
+              <th>Mata pelajaran</th>
+              <th>Kode</th>
+              <th>Tingkat</th>
+              <th style="text-align:right">Biaya</th>
+            </tr>
+          </thead>
+          <tbody id="subjectBody"></tbody>
+        </table>
+      </div>
+
+      <div class="card">
+        <h2>Biaya tambahan (jika berlaku)</h2>
+        <p class="hint">Hanya centang yang relevan dengan status pendaftaran Anda.</p>
+        <div class="fee-list" id="extraFees"></div>
+      </div>
+
+      <div class="card">
+        <h2>Checklist &amp; pernyataan</h2>
+        <ul class="checklist">
+          <li><span class="dot"></span>Lampirkan fotokopi halaman paspor yang menunjukkan nama dan tanggal lahir.</li>
+          <li><span class="dot"></span>Periksa kembali pilihan mata pelajaran sebelum formulir diserahkan.</li>
+          <li><span class="dot"></span>Informasi ujian akan diumumkan di kelas masing-masing siswa.</li>
+          <li><span class="dot"></span>Saya memahami peraturan Cambridge dan menyatakan data di atas benar; perubahan data mungkin dikenakan biaya tambahan.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>Pembayaran biaya ujian Cambridge</h2>
+        <div class="bank-box">
+          <div class="bank">
+            <div class="bname">CIMB Niaga</div>
+            <div class="acc">Atas nama Clarissa International</div>
+            <div class="num">8000-23368-300</div>
+          </div>
+          <div class="bank">
+            <div class="bname">BCA</div>
+            <div class="acc">Atas nama Yayasan Clarissa International</div>
+            <div class="num">340-394-9988</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="side">
+      <div class="summary-card">
+        <p class="label">Total yang harus dibayarkan</p>
+        <p class="total" id="grandTotal">Rp 0</p>
+        <p class="total-sub" id="subjectCount">Belum ada mata pelajaran dipilih</p>
+        <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+        <p class="progress-label" id="progressLabel">0% formulir terisi</p>
+      </div>
+
+      <div class="summary-list">
+        <h3>Data siswa</h3>
+        <div id="infoSummary"></div>
+      </div>
+
+      <div class="summary-list">
+        <h3>Mata pelajaran dipilih</h3>
+        <div id="subjectSummary"><p class="empty-state">Belum ada yang dicentang</p></div>
+      </div>
+
+      <div class="summary-list">
+        <h3>Rincian biaya</h3>
+        <div id="costBreakdown"></div>
+        <div class="grand"><span>Total</span><span class="v" id="grandTotal2">Rp 0</span></div>
+      </div>
+
+      <button class="export-btn" id="submitBtn" type="button" style="background:var(--navy-800); color:#fff;">Kirim ke admin</button>
+      <p class="export-hint" id="submitStatus">Data akan tersimpan otomatis ke Google Sheets sekolah.</p>
+
+      <button class="export-btn" id="exportBtn" type="button">Cetak / simpan sebagai PDF</button>
+      <p class="export-hint">Pilih "Save as PDF" pada jendela cetak yang muncul.</p>
+    </div>
+  </div>
+
+  <footer>Sekolah Global Indo-Asia &nbsp;·&nbsp; Formulir ini disusun sebagai alat bantu pengisian internal, bukan pengganti formulir resmi Cambridge.</footer>
+</div>
+
+<script>
+// PENTING untuk admin: ganti URL di bawah ini dengan Web App URL dari Google Apps Script.
+// Lihat panduan setup yang saya berikan terpisah untuk membuatnya.
+const GOOGLE_SCRIPT_URL = "GANTI_DENGAN_URL_WEB_APP_ANDA";
+
+const subjects = [
+  {name:"Arts and Design", code:"9479", asa:4200000, full:5200000},
+  {name:"Biology", code:"9700", asa:4200000, full:5200000},
+  {name:"Business", code:"9609", asa:3000000, full:4000000},
+  {name:"Chemistry", code:"9701", asa:4200000, full:5200000},
+  {name:"Chinese Language", code:"8238", asa:3000000, full:4000000},
+  {name:"Computer Science", code:"9618", asa:3000000, full:4000000},
+  {name:"Economics", code:"9708", asa:3000000, full:4000000},
+  {name:"English Language", code:"9093", asa:3000000, full:4000000},
+  {name:"Global Perspectives and Research", code:"9239", asa:4200000, full:5200000},
+  {name:"Mathematics", code:"9709", asa:3000000, full:4000000},
+  {name:"Physics", code:"9702", asa:4200000, full:5200000},
+  {name:"Psychology", code:"9990", asa:3000000, full:4000000},
+];
+
+const extraFeeDefs = [
+  {id:"reg", title:"Biaya pendaftaran pusat ujian", desc:"Untuk pendaftaran ujian pertama kali / siswa baru", amount:2000000, hasQty:false},
+  {id:"late", title:"Denda keterlambatan", desc:"Per mata pelajaran, setelah tanggal penutupan entri", amount:1700000, hasQty:true},
+  {id:"change", title:"Perubahan pilihan silabus", desc:"Per mata pelajaran, setelah tanggal penutupan entri", amount:1700000, hasQty:true},
+  {id:"cert", title:"Penggantian sertifikat hilang", desc:"Per periode ujian", amount:3800000, hasQty:false},
+];
+
+function rupiah(n){
+  return "Rp " + Math.round(n).toLocaleString("id-ID");
+}
+
+const subjectBody = document.getElementById("subjectBody");
+subjects.forEach((s, i) => {
+  const tr = document.createElement("tr");
+  tr.id = "row-" + i;
+  tr.innerHTML = `
+    <td><input type="checkbox" class="checkbox-big" id="chk-${i}"></td>
+    <td class="subject-name">${s.name}</td>
+    <td class="code">${s.code}</td>
+    <td>
+      <div class="level-choice">
+        <label><input type="radio" name="level-${i}" value="asa" checked disabled><span>AS/A Level</span></label>
+        <label><input type="radio" name="level-${i}" value="full" disabled><span>Full A Level</span></label>
+      </div>
+    </td>
+    <td class="price" id="price-${i}">${rupiah(s.asa)}</td>
+  `;
+  subjectBody.appendChild(tr);
+});
+
+const extraFees = document.getElementById("extraFees");
+extraFeeDefs.forEach(f => {
+  const row = document.createElement("div");
+  row.className = "fee-row";
+  row.id = "feerow-" + f.id;
+  row.innerHTML = `
+    <div class="left">
+      <input type="checkbox" class="checkbox-big" id="fee-${f.id}" style="margin-top:2px">
+      <div class="text">
+        <div class="title">${f.title}</div>
+        <div class="desc">${f.desc}</div>
+        ${f.hasQty ? `<div class="qty"><span style="font-size:12.5px;color:var(--ink-soft)">Jumlah mapel:</span><input type="number" min="1" value="1" id="qty-${f.id}" disabled></div>` : ""}
+      </div>
+    </div>
+    <div class="amount">${rupiah(f.amount)}${f.hasQty ? " / mapel" : ""}</div>
+  `;
+  extraFees.appendChild(row);
+});
+
+function collectState(){
+  const chosen = [];
+  subjects.forEach((s,i) => {
+    const checked = document.getElementById(`chk-${i}`).checked;
+    const level = document.querySelector(`input[name="level-${i}"]:checked`).value;
+    if(checked){
+      chosen.push({name:s.name, level, amount: level === "asa" ? s.asa : s.full});
+    }
+  });
+  const extras = extraFeeDefs.map(f => {
+    const checked = document.getElementById(`fee-${f.id}`).checked;
+    const qty = f.hasQty ? parseInt(document.getElementById(`qty-${f.id}`).value || "1", 10) : 1;
+    return {...f, checked, qty, total: checked ? f.amount * qty : 0};
+  });
+  return {chosen, extras};
+}
+
+function render(){
+  subjects.forEach((s,i) => {
+    const checked = document.getElementById(`chk-${i}`).checked;
+    const radios = document.querySelectorAll(`input[name="level-${i}"]`);
+    radios.forEach(r => r.disabled = !checked);
+    const level = document.querySelector(`input[name="level-${i}"]:checked`).value;
+    document.getElementById(`price-${i}`).textContent = rupiah(level === "asa" ? s.asa : s.full);
+    document.getElementById("row-" + i).classList.toggle("active", checked);
+  });
+
+  extraFeeDefs.forEach(f => {
+    const checked = document.getElementById(`fee-${f.id}`).checked;
+    document.getElementById("feerow-" + f.id).classList.toggle("checked", checked);
+    if(f.hasQty){
+      document.getElementById(`qty-${f.id}`).disabled = !checked;
+    }
+  });
+
+  const {chosen, extras} = collectState();
+
+  const subjectSubtotal = chosen.reduce((sum,c) => sum + c.amount, 0);
+  const extrasSubtotal = extras.reduce((sum,e) => sum + e.total, 0);
+  const grandTotal = subjectSubtotal + extrasSubtotal;
+
+  document.getElementById("grandTotal").textContent = rupiah(grandTotal);
+  document.getElementById("grandTotal2").textContent = rupiah(grandTotal);
+  document.getElementById("subjectCount").textContent = chosen.length === 0
+    ? "Belum ada mata pelajaran dipilih"
+    : `${chosen.length} mata pelajaran dipilih`;
+
+  const subjSummary = document.getElementById("subjectSummary");
+  if(chosen.length === 0){
+    subjSummary.innerHTML = `<p class="empty-state">Belum ada yang dicentang</p>`;
+  } else {
+    subjSummary.innerHTML = chosen.map(c => `
+      <div class="subj-chip">
+        <div>
+          <div class="name">${c.name}</div>
+          <div class="lvl">${c.level === "asa" ? "AS/A Level" : "Full A Level"}</div>
+        </div>
+        <div class="amt">${rupiah(c.amount)}</div>
+      </div>
+    `).join("");
+  }
+
+  const costBreakdown = document.getElementById("costBreakdown");
+  let lines = [];
+  if(subjectSubtotal > 0){
+    lines.push(`<div class="cost-line"><span class="k">Biaya mata pelajaran (${chosen.length})</span><span class="v">${rupiah(subjectSubtotal)}</span></div>`);
+  }
+  extras.filter(e => e.checked).forEach(e => {
+    const label = e.hasQty ? `${e.title} (${e.qty} mapel)` : e.title;
+    lines.push(`<div class="cost-line"><span class="k">${label}</span><span class="v">${rupiah(e.total)}</span></div>`);
+  });
+  costBreakdown.innerHTML = lines.length ? lines.join("") : `<p class="empty-state">Belum ada biaya</p>`;
+
+  const infoFields = [
+    ["Nama", () => {
+      const fam = document.getElementById("familyName").value.trim();
+      const first = document.getElementById("firstName").value.trim();
+      return (fam || first) ? `${fam}${fam && first ? " / " : ""}${first}` : "";
+    }],
+    ["Kelas", () => document.getElementById("grade").value.trim()],
+    ["Jenis kelamin", () => {
+      const g = document.querySelector('input[name="gender"]:checked');
+      return g ? (g.value === "M" ? "Laki-laki" : "Perempuan") : "";
+    }],
+    ["Tanggal lahir", () => {
+      const d = document.getElementById("dobDate").value.trim();
+      const m = document.getElementById("dobMonth").value.trim();
+      const y = document.getElementById("dobYear").value.trim();
+      return (d || m || y) ? `${d || "-"} / ${m || "-"} / ${y || "-"}` : "";
+    }],
+    ["No. HP siswa", () => document.getElementById("studentPhone").value.trim()],
+    ["Ayah", () => document.getElementById("fatherName").value.trim()],
+    ["Ibu", () => document.getElementById("motherName").value.trim()],
+    ["Alamat", () => document.getElementById("address").value.trim()],
+  ];
+
+  const infoSummary = document.getElementById("infoSummary");
+  infoSummary.innerHTML = infoFields.map(([label, getter]) => {
+    const val = getter();
+    return `<div class="info-line"><span class="k">${label}</span><span class="v ${val ? "" : "empty"}">${val || "Belum diisi"}</span></div>`;
+  }).join("");
+
+  let filled = 0;
+  infoFields.forEach(([, getter]) => { if(getter()) filled++; });
+  if(chosen.length > 0) filled++;
+  const totalFields = infoFields.length + 1;
+  const pct = Math.round((filled / totalFields) * 100);
+  document.getElementById("progressFill").style.width = pct + "%";
+  document.getElementById("progressLabel").textContent = pct + "% formulir terisi";
+}
+
+document.addEventListener("input", render);
+document.addEventListener("change", render);
+render();
+
+document.getElementById("exportBtn").addEventListener("click", () => {
+  document.querySelectorAll("input[type=text], input[type=tel]").forEach(el => {
+    el.setAttribute("value", el.value);
+  });
+  window.print();
+});
+
+function buildPayload(){
+  const {chosen, extras} = collectState();
+  const gender = document.querySelector('input[name="gender"]:checked');
+  return {
+    timestamp: new Date().toISOString(),
+    familyName: document.getElementById("familyName").value.trim(),
+    firstName: document.getElementById("firstName").value.trim(),
+    grade: document.getElementById("grade").value.trim(),
+    gender: gender ? (gender.value === "M" ? "Laki-laki" : "Perempuan") : "",
+    dob: `${document.getElementById("dobDate").value.trim()}/${document.getElementById("dobMonth").value.trim()}/${document.getElementById("dobYear").value.trim()}`,
+    studentPhone: document.getElementById("studentPhone").value.trim(),
+    fatherName: document.getElementById("fatherName").value.trim(),
+    fatherPhone: document.getElementById("fatherPhone").value.trim(),
+    motherName: document.getElementById("motherName").value.trim(),
+    motherPhone: document.getElementById("motherPhone").value.trim(),
+    address: document.getElementById("address").value.trim(),
+    subjectsText: chosen.map(c => `${c.name} (${c.level === "asa" ? "AS/A" : "Full A"})`).join(", "),
+    extrasText: extras.filter(e => e.checked).map(e => e.hasQty ? `${e.title} x${e.qty}` : e.title).join(", "),
+    grandTotal: chosen.reduce((s,c)=>s+c.amount,0) + extras.reduce((s,e)=>s+e.total,0)
+  };
+}
+
+document.getElementById("submitBtn").addEventListener("click", async () => {
+  const statusEl = document.getElementById("submitStatus");
+  const payload = buildPayload();
+
+  if(!payload.familyName && !payload.firstName){
+    statusEl.textContent = "Isi nama siswa terlebih dahulu sebelum mengirim.";
+    statusEl.style.color = "var(--red-700)";
+    return;
+  }
+  if(GOOGLE_SCRIPT_URL === "GANTI_DENGAN_URL_WEB_APP_ANDA"){
+    statusEl.textContent = "Admin belum menghubungkan Google Sheets (URL belum diisi).";
+    statusEl.style.color = "var(--red-700)";
+    return;
+  }
+
+  statusEl.textContent = "Mengirim...";
+  statusEl.style.color = "var(--ink-soft)";
+  try{
+    await fetch(GOOGLE_SCRIPT_URL, {
+      method: "POST",
+      mode: "no-cors",
+      headers: {"Content-Type": "text/plain"},
+      body: JSON.stringify(payload)
+    });
+    statusEl.textContent = "Data terkirim ke admin.";
+    statusEl.style.color = "var(--green-700)";
+  } catch(err){
+    statusEl.textContent = "Gagal mengirim, periksa koneksi internet.";
+    statusEl.style.color = "var(--red-700)";
+  }
+});
+</script>
+</body>
+</html>
