@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SGIA — Formulir Pendaftaran Cambridge AS/A Level (Retake)</title>
+<title>SGIA — Cambridge AS/A Level Registration Form (Retake)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -451,12 +451,64 @@
     color:var(--ink-faint);
     margin-top:20px;
   }
+  @media(max-width:1024px){
+    .shell{padding:22px 16px 90px;}
+    .layout{grid-template-columns:1fr 320px; gap:16px;}
+  }
   @media(max-width:900px){
     .layout{grid-template-columns:1fr;}
-    .field-grid{grid-template-columns:1fr;}
     .side{position:static;}
-    .bank-box{grid-template-columns:1fr;}
     .masthead{flex-direction:column;align-items:flex-start;}
+  }
+  @media(max-width:680px){
+    .shell{padding:16px 14px 84px;}
+    .masthead{padding:20px 18px;}
+    .masthead h1{font-size:21px;}
+    .masthead .sub{font-size:13px;}
+    .card{padding:18px 16px;}
+    .field-grid{grid-template-columns:1fr;}
+    .bank-box{grid-template-columns:1fr;}
+    .dob-row{grid-template-columns:1fr 1fr 1fr;}
+    .field input, .field select{height:44px; font-size:16px;}
+    table.subjects{font-size:12.5px;}
+    table.subjects th:nth-child(3), table.subjects td.code{display:none;}
+    .level-choice{flex-direction:column; gap:6px;}
+    .fee-row{flex-direction:column; align-items:flex-start;}
+    .fee-row .amount{align-self:flex-end;}
+    .export-btn{height:46px; font-size:15px;}
+    .checkbox-big{width:22px; height:22px;}
+  }
+  .mobile-total-bar{
+    display:none;
+  }
+  @media(max-width:680px){
+    .mobile-total-bar{
+      display:flex;
+      position:fixed;
+      left:0; right:0; bottom:0;
+      z-index:40;
+      background:var(--navy-900);
+      color:#fff;
+      padding:10px 16px;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      box-shadow:0 -2px 10px rgba(0,0,0,.18);
+    }
+    .mobile-total-bar .mt-label{font-size:11px; color:#a9b2c6; margin:0;}
+    .mobile-total-bar .mt-amount{font-family:"Source Serif 4",Georgia,serif; font-size:18px; font-weight:600; margin:0; font-variant-numeric:tabular-nums;}
+    .mobile-total-bar button{
+      background:var(--gold-500);
+      color:#2a1c04;
+      border:none;
+      height:38px;
+      padding:0 16px;
+      border-radius:8px;
+      font-size:13px;
+      font-weight:600;
+      cursor:pointer;
+    }
+    .shell{padding-bottom:96px;}
   }
   .export-btn{
     display:inline-flex;
@@ -484,7 +536,7 @@
   .print-only{display:none;}
   @media print{
     body{background:#fff;}
-    .masthead .badge-row, .export-btn, .export-hint, .checklist, footer, .side .summary-card .progress-track, .side .summary-card .progress-label{display:none;}
+    .masthead .badge-row, .export-btn, .export-hint, .checklist, footer, .side .summary-card .progress-track, .side .summary-card .progress-label, .mobile-total-bar{display:none;}
     .layout{grid-template-columns:1fr;display:block;}
     .card{break-inside:avoid; border:1px solid #ccc; margin-bottom:12px;}
     .side{position:static; margin-top:14px;}
@@ -503,12 +555,12 @@
   <div class="masthead">
     <div>
       <p class="school">Sekolah Global Indo-Asia &nbsp;·&nbsp; Jl. Ahmad Yani Kav. SGIA, Batam</p>
-      <h1 class="headline">Formulir pendaftaran Cambridge AS &amp; A Level</h1>
-      <p class="sub">Ujian susulan (retake) — periode Oktober–November 2026</p>
+      <h1 class="headline">Cambridge AS &amp; A Level registration form</h1>
+      <p class="sub">Retake exam — October–November 2026 series</p>
     </div>
     <div class="badge-row">
-      <span class="pill deadline">Formulir paling lambat 31 Agustus 2026</span>
-      <span class="pill">Pembayaran paling lambat 4 September 2026</span>
+      <span class="pill deadline">Form due by August 31, 2026</span>
+      <span class="pill">Payment due by September 4, 2026</span>
     </div>
   </div>
 
@@ -516,80 +568,80 @@
     <div class="main">
 
       <div class="card">
-        <h2>Data siswa</h2>
-        <p class="hint">Isi sesuai nama pada paspor.</p>
+        <h2>Student information</h2>
+        <p class="hint">Fill in exactly as shown on the passport.</p>
         <div class="field-grid">
           <div class="field">
-            <label for="familyName">Nama keluarga (family name)</label>
-            <input id="familyName" type="text" placeholder="Contoh: Tanuwijaya">
+            <label for="familyName">Family name</label>
+            <input id="familyName" type="text" placeholder="e.g. Tanuwijaya">
           </div>
           <div class="field">
-            <label for="firstName">Nama depan &amp; tengah</label>
-            <input id="firstName" type="text" placeholder="Contoh: Kevin Aditya">
+            <label for="firstName">First &amp; middle names</label>
+            <input id="firstName" type="text" placeholder="e.g. Kevin Aditya">
           </div>
           <div class="field">
-            <label for="grade">Kelas</label>
-            <input id="grade" type="text" placeholder="Contoh: 12">
+            <label for="grade">Grade</label>
+            <input id="grade" type="text" placeholder="e.g. 12">
           </div>
           <div class="field">
-            <label>Jenis kelamin</label>
+            <label>Gender</label>
             <div class="radio-row">
-              <label><input type="radio" name="gender" value="M">Laki-laki</label>
-              <label><input type="radio" name="gender" value="F">Perempuan</label>
+              <label><input type="radio" name="gender" value="M">Male</label>
+              <label><input type="radio" name="gender" value="F">Female</label>
             </div>
           </div>
           <div class="field full">
-            <label>Tanggal lahir</label>
+            <label>Date of birth</label>
             <div class="dob-row">
-              <input id="dobDate" type="text" placeholder="Tanggal">
-              <input id="dobMonth" type="text" placeholder="Bulan">
-              <input id="dobYear" type="text" placeholder="Tahun">
+              <input id="dobDate" type="text" placeholder="Date">
+              <input id="dobMonth" type="text" placeholder="Month">
+              <input id="dobYear" type="text" placeholder="Year">
             </div>
           </div>
           <div class="field">
-            <label for="studentPhone">No. HP siswa</label>
-            <input id="studentPhone" type="tel" placeholder="08xx-xxxx-xxxx">
+            <label for="studentPhone">Student's phone number</label>
+            <input id="studentPhone" type="tel" placeholder="e.g. 08xx-xxxx-xxxx">
           </div>
         </div>
       </div>
 
       <div class="card">
-        <h2>Data orang tua</h2>
+        <h2>Parent information</h2>
         <div class="field-grid">
           <div class="field">
-            <label for="fatherName">Nama ayah</label>
+            <label for="fatherName">Father's name</label>
             <input id="fatherName" type="text">
           </div>
           <div class="field">
-            <label for="fatherPhone">No. HP ayah</label>
+            <label for="fatherPhone">Father's phone number</label>
             <input id="fatherPhone" type="tel">
           </div>
           <div class="field">
-            <label for="motherName">Nama ibu</label>
+            <label for="motherName">Mother's name</label>
             <input id="motherName" type="text">
           </div>
           <div class="field">
-            <label for="motherPhone">No. HP ibu</label>
+            <label for="motherPhone">Mother's phone number</label>
             <input id="motherPhone" type="tel">
           </div>
           <div class="field full">
-            <label for="address">Alamat</label>
-            <input id="address" type="text" placeholder="Alamat lengkap">
+            <label for="address">Address</label>
+            <input id="address" type="text" placeholder="Full address">
           </div>
         </div>
       </div>
 
       <div class="card">
-        <h2>Pilihan mata pelajaran</h2>
-        <p class="hint">Centang mata pelajaran yang diambil, lalu pilih AS/A Level atau Full A Level.</p>
+        <h2>Subject selection</h2>
+        <p class="hint">Tick the subjects you are taking, then choose AS/A Level or Full A Level.</p>
         <table class="subjects">
           <thead>
             <tr>
               <th style="width:26px"></th>
-              <th>Mata pelajaran</th>
-              <th>Kode</th>
-              <th>Tingkat</th>
-              <th style="text-align:right">Biaya</th>
+              <th>Subject</th>
+              <th>Code</th>
+              <th>Level</th>
+              <th style="text-align:right">Cost</th>
             </tr>
           </thead>
           <tbody id="subjectBody"></tbody>
@@ -597,32 +649,32 @@
       </div>
 
       <div class="card">
-        <h2>Biaya tambahan (jika berlaku)</h2>
-        <p class="hint">Hanya centang yang relevan dengan status pendaftaran Anda.</p>
+        <h2>Additional fees (if applicable)</h2>
+        <p class="hint">Only tick what applies to your registration status.</p>
         <div class="fee-list" id="extraFees"></div>
       </div>
 
       <div class="card">
-        <h2>Checklist &amp; pernyataan</h2>
+        <h2>Checklist &amp; declaration</h2>
         <ul class="checklist">
-          <li><span class="dot"></span>Lampirkan fotokopi halaman paspor yang menunjukkan nama dan tanggal lahir.</li>
-          <li><span class="dot"></span>Periksa kembali pilihan mata pelajaran sebelum formulir diserahkan.</li>
-          <li><span class="dot"></span>Informasi ujian akan diumumkan di kelas masing-masing siswa.</li>
-          <li><span class="dot"></span>Saya memahami peraturan Cambridge dan menyatakan data di atas benar; perubahan data mungkin dikenakan biaya tambahan.</li>
+          <li><span class="dot"></span>Attach a photocopy of the passport page showing your name and date of birth.</li>
+          <li><span class="dot"></span>Double-check your subject selection before submitting the form.</li>
+          <li><span class="dot"></span>Exam information will be posted in each student's respective classroom.</li>
+          <li><span class="dot"></span>I am fully aware of the Cambridge rules and regulations and confirm the information above is correct; changes may incur an additional fee.</li>
         </ul>
       </div>
 
       <div class="card">
-        <h2>Pembayaran biaya ujian Cambridge</h2>
+        <h2>Cambridge exam fee payment</h2>
         <div class="bank-box">
           <div class="bank">
             <div class="bname">CIMB Niaga</div>
-            <div class="acc">Atas nama Clarissa International</div>
+            <div class="acc">Account name: Clarissa International</div>
             <div class="num">8000-23368-300</div>
           </div>
           <div class="bank">
             <div class="bname">BCA</div>
-            <div class="acc">Atas nama Yayasan Clarissa International</div>
+            <div class="acc">Account name: Yayasan Clarissa International</div>
             <div class="num">340-394-9988</div>
           </div>
         </div>
@@ -632,44 +684,50 @@
 
     <div class="side">
       <div class="summary-card">
-        <p class="label">Total yang harus dibayarkan</p>
+        <p class="label">Total amount payable</p>
         <p class="total" id="grandTotal">Rp 0</p>
-        <p class="total-sub" id="subjectCount">Belum ada mata pelajaran dipilih</p>
+        <p class="total-sub" id="subjectCount">No subjects selected yet</p>
         <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
-        <p class="progress-label" id="progressLabel">0% formulir terisi</p>
+        <p class="progress-label" id="progressLabel">0% of form completed</p>
       </div>
 
       <div class="summary-list">
-        <h3>Data siswa</h3>
+        <h3>Student details</h3>
         <div id="infoSummary"></div>
       </div>
 
       <div class="summary-list">
-        <h3>Mata pelajaran dipilih</h3>
-        <div id="subjectSummary"><p class="empty-state">Belum ada yang dicentang</p></div>
+        <h3>Selected subjects</h3>
+        <div id="subjectSummary"><p class="empty-state">Nothing ticked yet</p></div>
       </div>
 
       <div class="summary-list">
-        <h3>Rincian biaya</h3>
+        <h3>Cost breakdown</h3>
         <div id="costBreakdown"></div>
         <div class="grand"><span>Total</span><span class="v" id="grandTotal2">Rp 0</span></div>
       </div>
 
-      <button class="export-btn" id="submitBtn" type="button" style="background:var(--navy-800); color:#fff;">Kirim ke admin</button>
-      <p class="export-hint" id="submitStatus">Data akan tersimpan otomatis ke Google Sheets sekolah.</p>
+      <button class="export-btn" id="submitBtn" type="button" style="background:var(--navy-800); color:#fff;">Send to admin</button>
+      <p class="export-hint" id="submitStatus">Data will be saved automatically to the school's Google Sheet.</p>
 
-      <button class="export-btn" id="exportBtn" type="button">Cetak / simpan sebagai PDF</button>
-      <p class="export-hint">Pilih "Save as PDF" pada jendela cetak yang muncul.</p>
+      <button class="export-btn" id="exportBtn" type="button">Print / save as PDF</button>
+      <p class="export-hint">Choose "Save as PDF" in the print dialog that appears.</p>
     </div>
   </div>
 
-  <footer>Sekolah Global Indo-Asia &nbsp;·&nbsp; Formulir ini disusun sebagai alat bantu pengisian internal, bukan pengganti formulir resmi Cambridge.</footer>
+  <footer>Sekolah Global Indo-Asia &nbsp;·&nbsp; This form is an internal filling aid and does not replace the official Cambridge entry form.</footer>
+</div>
+
+<div class="mobile-total-bar" id="mobileTotalBar">
+  <div>
+    <p class="mt-label">Running total</p>
+    <p class="mt-amount" id="mobileTotalAmount">Rp 0</p>
+  </div>
+  <button type="button" id="mobileScrollBtn">View summary</button>
 </div>
 
 <script>
-// PENTING untuk admin: ganti URL di bawah ini dengan Web App URL dari Google Apps Script.
-// Lihat panduan setup yang saya berikan terpisah untuk membuatnya.
-const GOOGLE_SCRIPT_URL = https://script.google.com/macros/s/AKfycbxK-xImj-2JVTQdqDNzdANCxTEcrZ1J8HX2xERKNJByrd6IQlzXS6L3MzX3nuxXrY4/exec
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxK-xImj-2JVTQdqDNzdANCxTEcrZ1J8HX2xERKNJByrd6IQlzXS6L3MzX3nuxXrY4/exec";
 
 const subjects = [
   {name:"Arts and Design", code:"9479", asa:4200000, full:5200000},
@@ -687,10 +745,10 @@ const subjects = [
 ];
 
 const extraFeeDefs = [
-  {id:"reg", title:"Biaya pendaftaran pusat ujian", desc:"Untuk pendaftaran ujian pertama kali / siswa baru", amount:2000000, hasQty:false},
-  {id:"late", title:"Denda keterlambatan", desc:"Per mata pelajaran, setelah tanggal penutupan entri", amount:1700000, hasQty:true},
-  {id:"change", title:"Perubahan pilihan silabus", desc:"Per mata pelajaran, setelah tanggal penutupan entri", amount:1700000, hasQty:true},
-  {id:"cert", title:"Penggantian sertifikat hilang", desc:"Per periode ujian", amount:3800000, hasQty:false},
+  {id:"reg", title:"Center registration fee", desc:"For first-time exam registration / new student", amount:2000000, hasQty:false},
+  {id:"late", title:"Late penalty charge", desc:"Per subject, after the entry closing date", amount:1700000, hasQty:true},
+  {id:"change", title:"Change of syllabus option", desc:"Per subject, after the entry closing date", amount:1700000, hasQty:true},
+  {id:"cert", title:"Replacement of lost certificate", desc:"Per exam series", amount:3800000, hasQty:false},
 ];
 
 function rupiah(n){
@@ -727,10 +785,10 @@ extraFeeDefs.forEach(f => {
       <div class="text">
         <div class="title">${f.title}</div>
         <div class="desc">${f.desc}</div>
-        ${f.hasQty ? `<div class="qty"><span style="font-size:12.5px;color:var(--ink-soft)">Jumlah mapel:</span><input type="number" min="1" value="1" id="qty-${f.id}" disabled></div>` : ""}
+        ${f.hasQty ? `<div class="qty"><span style="font-size:12.5px;color:var(--ink-soft)">Number of subjects:</span><input type="number" min="1" value="1" id="qty-${f.id}" disabled></div>` : ""}
       </div>
     </div>
-    <div class="amount">${rupiah(f.amount)}${f.hasQty ? " / mapel" : ""}</div>
+    <div class="amount">${rupiah(f.amount)}${f.hasQty ? " / subject" : ""}</div>
   `;
   extraFees.appendChild(row);
 });
@@ -778,13 +836,14 @@ function render(){
 
   document.getElementById("grandTotal").textContent = rupiah(grandTotal);
   document.getElementById("grandTotal2").textContent = rupiah(grandTotal);
+  document.getElementById("mobileTotalAmount").textContent = rupiah(grandTotal);
   document.getElementById("subjectCount").textContent = chosen.length === 0
-    ? "Belum ada mata pelajaran dipilih"
-    : `${chosen.length} mata pelajaran dipilih`;
+    ? "No subjects selected yet"
+    : `${chosen.length} subject${chosen.length > 1 ? "s" : ""} selected`;
 
   const subjSummary = document.getElementById("subjectSummary");
   if(chosen.length === 0){
-    subjSummary.innerHTML = `<p class="empty-state">Belum ada yang dicentang</p>`;
+    subjSummary.innerHTML = `<p class="empty-state">Nothing ticked yet</p>`;
   } else {
     subjSummary.innerHTML = chosen.map(c => `
       <div class="subj-chip">
@@ -800,41 +859,41 @@ function render(){
   const costBreakdown = document.getElementById("costBreakdown");
   let lines = [];
   if(subjectSubtotal > 0){
-    lines.push(`<div class="cost-line"><span class="k">Biaya mata pelajaran (${chosen.length})</span><span class="v">${rupiah(subjectSubtotal)}</span></div>`);
+    lines.push(`<div class="cost-line"><span class="k">Subject fees (${chosen.length})</span><span class="v">${rupiah(subjectSubtotal)}</span></div>`);
   }
   extras.filter(e => e.checked).forEach(e => {
-    const label = e.hasQty ? `${e.title} (${e.qty} mapel)` : e.title;
+    const label = e.hasQty ? `${e.title} (${e.qty} subjects)` : e.title;
     lines.push(`<div class="cost-line"><span class="k">${label}</span><span class="v">${rupiah(e.total)}</span></div>`);
   });
-  costBreakdown.innerHTML = lines.length ? lines.join("") : `<p class="empty-state">Belum ada biaya</p>`;
+  costBreakdown.innerHTML = lines.length ? lines.join("") : `<p class="empty-state">No fees yet</p>`;
 
   const infoFields = [
-    ["Nama", () => {
+    ["Name", () => {
       const fam = document.getElementById("familyName").value.trim();
       const first = document.getElementById("firstName").value.trim();
       return (fam || first) ? `${fam}${fam && first ? " / " : ""}${first}` : "";
     }],
-    ["Kelas", () => document.getElementById("grade").value.trim()],
-    ["Jenis kelamin", () => {
+    ["Grade", () => document.getElementById("grade").value.trim()],
+    ["Gender", () => {
       const g = document.querySelector('input[name="gender"]:checked');
-      return g ? (g.value === "M" ? "Laki-laki" : "Perempuan") : "";
+      return g ? (g.value === "M" ? "Male" : "Female") : "";
     }],
-    ["Tanggal lahir", () => {
+    ["Date of birth", () => {
       const d = document.getElementById("dobDate").value.trim();
       const m = document.getElementById("dobMonth").value.trim();
       const y = document.getElementById("dobYear").value.trim();
       return (d || m || y) ? `${d || "-"} / ${m || "-"} / ${y || "-"}` : "";
     }],
-    ["No. HP siswa", () => document.getElementById("studentPhone").value.trim()],
-    ["Ayah", () => document.getElementById("fatherName").value.trim()],
-    ["Ibu", () => document.getElementById("motherName").value.trim()],
-    ["Alamat", () => document.getElementById("address").value.trim()],
+    ["Student phone", () => document.getElementById("studentPhone").value.trim()],
+    ["Father", () => document.getElementById("fatherName").value.trim()],
+    ["Mother", () => document.getElementById("motherName").value.trim()],
+    ["Address", () => document.getElementById("address").value.trim()],
   ];
 
   const infoSummary = document.getElementById("infoSummary");
   infoSummary.innerHTML = infoFields.map(([label, getter]) => {
     const val = getter();
-    return `<div class="info-line"><span class="k">${label}</span><span class="v ${val ? "" : "empty"}">${val || "Belum diisi"}</span></div>`;
+    return `<div class="info-line"><span class="k">${label}</span><span class="v ${val ? "" : "empty"}">${val || "Not filled in yet"}</span></div>`;
   }).join("");
 
   let filled = 0;
@@ -843,12 +902,16 @@ function render(){
   const totalFields = infoFields.length + 1;
   const pct = Math.round((filled / totalFields) * 100);
   document.getElementById("progressFill").style.width = pct + "%";
-  document.getElementById("progressLabel").textContent = pct + "% formulir terisi";
+  document.getElementById("progressLabel").textContent = pct + "% of form completed";
 }
 
 document.addEventListener("input", render);
 document.addEventListener("change", render);
 render();
+
+document.getElementById("mobileScrollBtn").addEventListener("click", () => {
+  document.querySelector(".side").scrollIntoView({behavior:"smooth", block:"start"});
+});
 
 document.getElementById("exportBtn").addEventListener("click", () => {
   document.querySelectorAll("input[type=text], input[type=tel]").forEach(el => {
@@ -865,7 +928,7 @@ function buildPayload(){
     familyName: document.getElementById("familyName").value.trim(),
     firstName: document.getElementById("firstName").value.trim(),
     grade: document.getElementById("grade").value.trim(),
-    gender: gender ? (gender.value === "M" ? "Laki-laki" : "Perempuan") : "",
+    gender: gender ? (gender.value === "M" ? "Male" : "Female") : "",
     dob: `${document.getElementById("dobDate").value.trim()}/${document.getElementById("dobMonth").value.trim()}/${document.getElementById("dobYear").value.trim()}`,
     studentPhone: document.getElementById("studentPhone").value.trim(),
     fatherName: document.getElementById("fatherName").value.trim(),
@@ -884,17 +947,12 @@ document.getElementById("submitBtn").addEventListener("click", async () => {
   const payload = buildPayload();
 
   if(!payload.familyName && !payload.firstName){
-    statusEl.textContent = "Isi nama siswa terlebih dahulu sebelum mengirim.";
-    statusEl.style.color = "var(--red-700)";
-    return;
-  }
-  if(GOOGLE_SCRIPT_URL === "GANTI_DENGAN_URL_WEB_APP_ANDA"){
-    statusEl.textContent = "Admin belum menghubungkan Google Sheets (URL belum diisi).";
+    statusEl.textContent = "Please enter the student's name before sending.";
     statusEl.style.color = "var(--red-700)";
     return;
   }
 
-  statusEl.textContent = "Mengirim...";
+  statusEl.textContent = "Sending...";
   statusEl.style.color = "var(--ink-soft)";
   try{
     await fetch(GOOGLE_SCRIPT_URL, {
@@ -903,10 +961,10 @@ document.getElementById("submitBtn").addEventListener("click", async () => {
       headers: {"Content-Type": "text/plain"},
       body: JSON.stringify(payload)
     });
-    statusEl.textContent = "Data terkirim ke admin.";
+    statusEl.textContent = "Data sent to admin.";
     statusEl.style.color = "var(--green-700)";
   } catch(err){
-    statusEl.textContent = "Gagal mengirim, periksa koneksi internet.";
+    statusEl.textContent = "Failed to send, please check your internet connection.";
     statusEl.style.color = "var(--red-700)";
   }
 });
