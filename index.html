@@ -432,6 +432,36 @@
     margin-top:7px;
     flex-shrink:0;
   }
+  .declaration-box{
+    display:flex;
+    align-items:flex-start;
+    gap:12px;
+    padding:14px 16px;
+    border:1px solid var(--line);
+    border-radius:9px;
+    cursor:pointer;
+    transition:border-color .15s ease, background .15s ease;
+  }
+  .declaration-box.checked{
+    border-color:var(--gold-500);
+    background:var(--gold-50);
+  }
+  .declaration-box input{
+    margin-top:2px;
+    flex-shrink:0;
+  }
+  .declaration-box span{
+    font-size:13.5px;
+    color:var(--ink);
+    line-height:1.55;
+  }
+  .declaration-required{
+    font-size:12px;
+    color:var(--red-700);
+    margin:8px 0 0;
+    display:none;
+  }
+  .declaration-required.show{display:block;}
   .bank-box{
     display:grid;
     grid-template-columns:1fr 1fr;
@@ -773,13 +803,22 @@
       </div>
 
       <div class="card">
-        <h2>Checklist &amp; declaration</h2>
+        <h2>Checklist</h2>
         <ul class="checklist">
-          <li><span class="dot"></span>Attach a photocopy of the passport page showing your name and date of birth.</li>
-          <li><span class="dot"></span>Double-check your subject selection before submitting the form.</li>
-          <li><span class="dot"></span>Exam information will be posted in each student's respective classroom.</li>
-          <li><span class="dot"></span>I am fully aware of the Cambridge rules and regulations and confirm the information above is correct; changes may incur an additional fee.</li>
+          <li><span class="dot"></span>Student personal information must match the passport exactly, including the full name and date of birth.</li>
+          <li><span class="dot"></span>Please carefully review your subject selections and all other information before submitting the form.</li>
+          <li><span class="dot"></span>Ensure all information is accurate to avoid any errors.</li>
+          <li><span class="dot"></span>Please submit the payment receipt to the School Finance Officer or the Cashier after completing the payment.</li>
         </ul>
+      </div>
+
+      <div class="card">
+        <h2>Parent and Student Declaration</h2>
+        <label class="declaration-box" id="declarationBox">
+          <input type="checkbox" class="checkbox-big" id="declarationCheck">
+          <span>We have read and understood the Cambridge rules and regulations. We confirm that all information provided in this form is accurate and complete. We understand that any changes after submission may incur an additional Cambridge administrative fee.</span>
+        </label>
+        <p class="declaration-required" id="declarationRequired">Please tick the box to confirm the declaration before submitting.</p>
       </div>
 
       <div class="card">
@@ -988,6 +1027,12 @@ function render(){
     }
   });
 
+  const declarationChecked = document.getElementById("declarationCheck").checked;
+  document.getElementById("declarationBox").classList.toggle("checked", declarationChecked);
+  if(declarationChecked){
+    document.getElementById("declarationRequired").classList.remove("show");
+  }
+
   const {chosen, extras} = collectState();
 
   const subjectSubtotal = chosen.reduce((sum,c) => sum + c.amount, 0);
@@ -1059,7 +1104,8 @@ function render(){
   let filled = 0;
   infoFields.forEach(([, getter]) => { if(getter()) filled++; });
   if(chosen.length > 0) filled++;
-  const totalFields = infoFields.length + 1;
+  if(declarationChecked) filled++;
+  const totalFields = infoFields.length + 2;
   const pct = Math.round((filled / totalFields) * 100);
   document.getElementById("progressFill").style.width = pct + "%";
   document.getElementById("progressLabel").textContent = pct + "% of form completed";
@@ -1151,6 +1197,14 @@ document.getElementById("submitBtn").addEventListener("click", async () => {
 
   if(!payload.familyName && !payload.firstName){
     statusEl.textContent = "Please enter the student's name before sending.";
+    statusEl.style.color = "var(--red-700)";
+    return;
+  }
+
+  if(!document.getElementById("declarationCheck").checked){
+    document.getElementById("declarationRequired").classList.add("show");
+    document.getElementById("declarationBox").scrollIntoView({behavior:"smooth", block:"center"});
+    statusEl.textContent = "Please confirm the Parent and Student Declaration before submitting.";
     statusEl.style.color = "var(--red-700)";
     return;
   }
